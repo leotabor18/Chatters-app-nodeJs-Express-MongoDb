@@ -13,14 +13,12 @@ mongoose.connect(process.env.URL, {
 }).then(()=>{ console.log('connected to database..');
 }).catch(err =>{ console.log(err) });
 
-
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
 const PORT = 5000 || process.env.PORT; 
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 io.on('connection' , socket =>{
     socket.on('user', user =>{
@@ -57,12 +55,9 @@ io.on('connection' , socket =>{
     });
     
 });
-
-
 function socketEmitMessage(result, socket){
     socket.join(result.room);
-    //Welcome message
-    socket.emit('message',  serverMessage(result.username ,'Welcome to Chatters app'));
+    socket.emit('message',  serverMessage(result.username ,'Welcome to Chatters app')); 
     Msg.find({room: result.room}).then(res =>{
         if(res != 0){
             res.forEach(element => {
@@ -70,7 +65,6 @@ function socketEmitMessage(result, socket){
             });
         }
     });
-    //emit to everybody except to users
     socket.broadcast
         .to(result.room)
         .emit(
@@ -99,4 +93,3 @@ function socketEmitMessage(result, socket){
 }
 
 server.listen(PORT, () => console.log(`Server start at port ${PORT}`));
-
