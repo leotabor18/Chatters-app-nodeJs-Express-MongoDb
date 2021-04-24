@@ -51,9 +51,7 @@ io.on('connection' , socket =>{
             });
             io.to(room).emit('message',  serverMessage( username, `${username} has left the chat`));
         });
-
     });
-    
 });
 function socketEmitMessage(result, socket){
     socket.join(result.room);
@@ -82,7 +80,6 @@ function socketEmitMessage(result, socket){
         }
         io.to(result.room).emit('roomInfo', roomInfo);
     });
-   
     socket.on('chat', chat =>{
         const chatMessage = chats(result.username, result.room, chat);
         const messageSchema = new Msg(chatMessage);
@@ -91,5 +88,4 @@ function socketEmitMessage(result, socket){
         })
     });
 }
-
 server.listen(PORT, () => console.log(`Server start at port ${PORT}`));
