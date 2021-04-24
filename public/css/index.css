@@ -49,9 +49,7 @@ form{
 .input:focus{
     box-shadow: none;
 }
-.btn{
-    margin: 10px 15px 15px 15px;
-}
+.btn{ margin: 10px 15px 15px 15px; }
 #error{
     margin: 8px 15px 0 15px;
     text-align: start;
@@ -65,7 +63,6 @@ footer{
     opacity: 0.8;
     padding: 10px;
 }
-
 @media only screen and (min-width : 700px){
     .container-fluid{
         width: 45vw;
