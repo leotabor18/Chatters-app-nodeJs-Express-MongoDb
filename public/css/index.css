@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500&display=swap');
+body{
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+}
+main{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-fluid{
+    height: 55%;
+    position: relative !important;
+    padding: 0;
+    width: 90vw;
+    opacity: 0.9;
+    background-color: #d4d4d4;
+    border-radius: 10px;
+    border: 1px solid rgba(150, 150, 150, 0.8);
+}
+.header{
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 28px;
+    height: 23vh;
+}
+.input-group{
+    padding: 0 15px 10px 15px;
+    margin-bottom: 10px;
+}
+.input-group-text{
+    font-size: 12px;
+    border: 1px solid rgb(150, 150, 150);
+}
+.input{ border: 1px solid rgb(150, 150, 150);}
+.input:focus{
+    box-shadow: none;
+}
+.btn{
+    margin: 10px 15px 15px 15px;
+}
+#error{
+    margin: 8px 15px 0 15px;
+    text-align: start;
+    color: red;
+    position: absolute;
+}
+footer{
+    width: 100%;
+    height: 20vh;
+    font-size: 15px;
+    opacity: 0.8;
+    padding: 10px;
+}
+
+@media only screen and (min-width : 700px){
+    .container-fluid{
+        width: 45vw;
+        height: 50%;;
+    }
+    form{ 
+        margin-top: 18px;
+        height: 25vh;
+    }
+}
+@media only screen and (min-width : 1000px){
+    .container-fluid{
+        width: 30vw;
+        height: 50%;;
+    }
+    form{ 
+        margin-top: 18px;
+        height: 25vh;
+    }
+}
