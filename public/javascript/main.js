@@ -7,7 +7,6 @@ const room = urlParams.get('room');
 if(username == null || username == ''){
     window.location.href = "../index.html";
 }
-
 button_arrow.addEventListener('click', ()=>{
     const open = document.querySelector('.open');
     const close = document.querySelector('.close');
@@ -19,14 +18,11 @@ button_arrow.addEventListener('click', ()=>{
         close.style.display = 'inline-block';
         open.style.display = 'none';
         sidebar.style.marginLeft = '0';
-
-
     }
     if(close_display == 'inline-block'){
         close.style.display = 'none';
         open.style.display = 'inline-block';
         sidebar.style.marginLeft = '-70%';
-
     }
 });
 
@@ -49,7 +45,6 @@ socket.on('roomInfo', roomInfo =>{
         ul.appendChild(names);
     });
 })
-
 form.addEventListener('submit', event =>{
     event.preventDefault();
     const formData = new FormData(form);
@@ -66,7 +61,6 @@ socket.on('chat-message', message =>{
     chatMessage(message);
     chat_area.scrollTop = chat_area.scrollHeight; 
 });
-
 function messageFromServer(data){
     const div = document.createElement('div');
     const p = document.createElement('p');
