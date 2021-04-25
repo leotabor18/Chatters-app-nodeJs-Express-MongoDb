@@ -18,7 +18,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-const PORT = 5500 || process.env.PORT; 
+const PORT = process.env.PORT ||  5500; 
 app.use(express.static(path.join(__dirname, 'public')));
 
 
