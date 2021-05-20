@@ -13,14 +13,12 @@ mongoose.connect(process.env.URL, {
 }).then(()=>{ console.log('connected to database..');
 }).catch(err =>{ console.log(err) });
 
-
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
 const PORT = process.env.PORT ||  5500; 
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 io.on('connection' , socket =>{
     socket.on('user', user =>{
@@ -53,16 +51,11 @@ io.on('connection' , socket =>{
             });
             io.to(room).emit('message',  serverMessage( username, `${username} has left the chat`));
         });
-
     });
-    
 });
-
-
 function socketEmitMessage(result, socket){
     socket.join(result.room);
-    //Welcome message
-    socket.emit('message',  serverMessage(result.username ,'Welcome to Chatters app'));
+    socket.emit('message',  serverMessage(result.username ,'Welcome to Chatters app')); 
     Msg.find({room: result.room}).then(res =>{
         if(res != 0){
             res.forEach(element => {
@@ -70,7 +63,6 @@ function socketEmitMessage(result, socket){
             });
         }
     });
-    //emit to everybody except to users
     socket.broadcast
         .to(result.room)
         .emit(
@@ -88,7 +80,6 @@ function socketEmitMessage(result, socket){
         }
         io.to(result.room).emit('roomInfo', roomInfo);
     });
-   
     socket.on('chat', chat =>{
         const chatMessage = chats(result.username, result.room, chat);
         const messageSchema = new Msg(chatMessage);
@@ -97,6 +88,4 @@ function socketEmitMessage(result, socket){
         })
     });
 }
-
 server.listen(PORT, () => console.log(`Server start at port ${PORT}`));
-
